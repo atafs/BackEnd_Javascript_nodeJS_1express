@@ -1,7 +1,8 @@
 {
   "name": "atafs",
   "version": "1.0.0",
-  "description": "expresstut",
+  "private": true,
+  "description": "first server and page lunched with nodeJS",
   "main": "expresstut.js",
   "dependencies": {
     "express": "^4.13.4",
