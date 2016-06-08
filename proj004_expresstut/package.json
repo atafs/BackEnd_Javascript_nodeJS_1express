@@ -1,9 +1,8 @@
 {
   "name": "atafs",
   "version": "1.0.0",
-  "private": true,
-  "description": "proj03 middleware",
-  "main": "expresstut.js",
+  "description": "cookies and more stuff",
+  "main": "credentials.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

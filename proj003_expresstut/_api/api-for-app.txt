@@ -9,3 +9,12 @@ http://localhost:3000/contact
 
 //file-upload
 http://localhost:3000/file-upload
+
+//junk
+http://localhost:3000/junk
+
+//contact
+http://localhost:3000/contact
+
+//file-upload
+http://localhost:3000/file-upload
