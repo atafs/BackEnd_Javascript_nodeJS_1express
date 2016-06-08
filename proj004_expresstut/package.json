@@ -1,6 +1,7 @@
 {
   "name": "atafs",
   "version": "1.0.0",
+  "private": true,
   "description": "cookies and more stuff",
   "main": "credentials.js",
   "scripts": {
@@ -13,6 +14,9 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
-    "formidable": "^1.0.17"
+    "express-session": "^1.13.0",
+    "formidable": "^1.0.17",
+    "fs": "0.0.2",
+    "parseurl": "^1.3.1"
   }
 }

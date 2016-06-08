@@ -2,7 +2,7 @@
 var express = require('express');
 var app = express();
 
-/* SECURITY: BLOCK our header from containing info about our server */
+/* SECURITY: BLOCK our header from containing info about our server ***********/
 app.disable('x-powered-by');
 
 /* IMPORT */
@@ -27,7 +27,7 @@ app.set('port', process.env.PORT || 3000);
 /* ALLOW access to the public folder for the images */
 app.use(express.static(__dirname + '/public'));
 
-/* ROUTES FOR THE API ************************************************/
+/* ROUTES FOR THE API *********************************************************/
 // root: point to the home file
 app.get('/', function(req, res) {
 	res.render('home');
@@ -104,7 +104,97 @@ app.post('/file-upload/:year/:month', function(req, res){
   });
 });
 
-/* MIDDLEWARE for the 404 and 500 errros */
+/* cookie view ****************************************************************/
+app.get('/cookie', function(req, res){
+	// Set the cookie and output in the ul as well
+	res.cookie('username', 'AmericoTomas', {expire : new Date() + 9999}).send('username has the value of : AmericoTomas');
+});
+
+// Show stored cookies in the console
+app.get('/listcookies', function(req, res){
+  console.log("Cookies : ", req.cookies);
+  res.send('Look in console for cookies');
+});
+
+// Delete a cookie
+app.get('/deletecookie', function(req, res){
+  res.clearCookie('username');
+  res.send('username Cookie Deleted');
+});
+
+/* session view (memory store *************************************************/
+// IMPORT
+var session = require('express-session');
+// parseurl view
+var parseurl = require('parseurl');
+
+// Middleware
+app.use(session({
+  // Only save back to the session store if a change was made
+  resave: false,
+  // Doesn't store data if a session is new and hasn't been modified
+  saveUninitialized: true,
+  // The secret string used to sign the session id cookie
+  secret: credentials.cookieSecret,
+}));
+
+// Middleware tracck with counter user session views
+app.use(function(req, res, next){
+  var views = req.session.views;
+  // If there are not any views, create empty string
+  if(!views){
+    views = req.session.views = {};
+  }
+  // Get the current path
+  var pathname = parseurl(req).pathname;
+  // Increment the value in the array using the path as the key
+  views[pathname] = (views[pathname] || 0) + 1;
+  next();
+});
+
+// viewcount view
+app.get('/viewcount', function(req, res, next){
+  res.send('You viewed this page ' + req.session.views['/viewcount'] + ' times ');
+});
+
+/* read and write files **** *************************************************/
+var fs = require("fs");
+
+app.get('/readfile', function(req, res, next){
+
+  // Read the file provided and either return the contents in data or an err
+  fs.readFile('./public/randomfile.txt', function (err, data) {
+	 // handle possible error
+	 if (err) {
+       return console.error(err);
+   }
+	 // PRINT to file
+   res.send("The File : " + data.toString());
+  });
+
+});
+
+// This writes and then reads from a file
+app.get('/writefile', function(req, res, next){
+  // If the file doesn't exist it is created and then you add the text provided in the 2nd parameter
+  fs.writeFile('./public/randomfile2.txt', 'More random text in the new file', function (err) {
+		// handle possible error
+	 if (err) {
+       return console.error(err);
+    }
+  });
+
+    // Read from the new file
+   fs.readFile('./public/randomfile2.txt', function (err, data) {
+	 // handle possible error
+	 if (err) {
+       return console.error(err);
+   }
+   res.send("The File : " + data.toString());
+  });
+});
+
+/* MIDDLEWARE for the 404 and 500 errros **************************************/
 // Custom 404 Page
 app.use(function(req, res) {
   // Define the content type
