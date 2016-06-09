@@ -1,2 +1,8 @@
 //root (home)
 http://localhost:3000/
+
+//thelist (prints the list of students in mongoDB)
+http://localhost:3000/thelist
+
+//newstudent (form to insert a new student in mongodb)
+http://localhost:3000/newstudent

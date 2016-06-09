@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h3.
+    Students
+  ul
+    each student, i in studentlist
+      li#student_list_item
+        a(href='#') #{student.student}
+        h4 address: #{student.street} #{student.city}, #{student.state}
+        h4 description: he/she is a GENIUS!! And Very modest one!! ;)
