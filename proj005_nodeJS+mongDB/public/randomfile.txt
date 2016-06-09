@@ -1,0 +1,3 @@
+this is my random file
+- reading all the file
+- with multiple lines

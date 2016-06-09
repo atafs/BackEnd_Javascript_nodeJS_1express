@@ -1,0 +1,38 @@
+//root (home)
+http://localhost:3000/
+
+//about
+http://localhost:3000/about
+
+//contact
+http://localhost:3000/contact
+
+//file-upload
+http://localhost:3000/file-upload
+
+//junk
+http://localhost:3000/junk
+
+//contact
+http://localhost:3000/contact
+
+//file-upload
+http://localhost:3000/file-upload
+
+//cookie insert
+http://localhost:3000/cookie
+
+//listcookies check all
+http://localhost:3000/listcookies
+
+//deletecookie delete all
+http://localhost:3000/deletecookie
+
+//viewcount number of times that the page was seen
+http://localhost:3000/viewcount
+
+//read from file (no style)
+http://localhost:3000/readfile
+
+//write to file (single line; no style)
+http://localhost:3000/writefile
