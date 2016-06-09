@@ -1,3 +1,3 @@
-REM run app
-cd C:\Users\AdminPC\Documents\BackEnd_Javascript_nodeJS_1express\proj004_expresstut
-node expresstut.js
+REM start server
+cd C:\Users\AdminPC\Documents\BackEnd_Javascript_nodeJS_1express\proj005_nodeJS+mongDB\nodeJS-plus-mongoDB
+npm start
