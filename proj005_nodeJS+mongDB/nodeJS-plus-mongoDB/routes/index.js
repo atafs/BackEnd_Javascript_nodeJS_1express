@@ -90,10 +90,8 @@ router.post('/addstudent', function(req, res){
           // Close the database
           db.close();
         });
-
       }
     });
-
   });
 
 module.exports = router;
